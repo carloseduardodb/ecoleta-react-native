@@ -31,6 +31,7 @@ const Points = () => {
 
     const navigation = useNavigation();
     const route = useRoute();
+    const urlPath = "http://10.0.0.100:8000/";
 
     const routeParams = route.params as Params;
 
@@ -75,6 +76,7 @@ const Points = () => {
             }
         }).then(response => {
             setPoints(response.data);
+            console.log(response.data)
         })
     }, [selectedItems])
 
@@ -135,7 +137,7 @@ const Points = () => {
                                     }}
                                 >
                                     <View style={styles.mapMarkerContainer}>
-                                        <Image style={styles.mapMarkerImage} source={{ uri: point.image_path }} />
+                                        <Image style={styles.mapMarkerImage} source={{ uri: urlPath+point.image_path }} />
                                         <Text style={styles.mapMarkerTitle}>{point.name}</Text>
                                     </View>
                                 </Marker>
@@ -226,6 +228,7 @@ const styles = StyleSheet.create({
         color: '#FFF',
         fontSize: 13,
         lineHeight: 23,
+        textAlign: 'center',
     },
 
     itemsContainer: {
